@@ -22,7 +22,7 @@ module Landescape
               begin
                 statements.shift(@options[:non_block])
               rescue ThreadError
-                Thread.kill
+                Thread.exit
               end
 
             if self.class.method_defined?(name)

@@ -30,11 +30,9 @@ module Landescape
         return exit_attribute_mode if modes.empty?
 
         modes.each do |mode|
-          if attr = GRAPHICS_MODES[mode]
-            window.attron attr
-          else
-            exit_attribute_mode
-          end
+          next unless attr = GRAPHICS_MODES[mode]
+
+          window.attron attr
         end
       end
 
