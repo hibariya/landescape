@@ -1,5 +1,7 @@
 # Landescape
 
+[![Build Status](https://travis-ci.org/hibariya/landescape.png?branch=master)](https://travis-ci.org/hibariya/landescape)
+
 Landscape is a library for handling escape sequence.
 
 ## Is It Good?
