@@ -49,7 +49,7 @@ module Landescape
     def escape(token)
       token << read_char
 
-      case token.chars.to_a.last
+      case token[-1]
       when /\[/
         escape_code token
       when /[()]/
@@ -68,7 +68,7 @@ module Landescape
     def escape_code(token)
       token << read_char
 
-      case token.chars.to_a.last
+      case token[-1]
       when /[\d?;<=>]/
         escape_code token
       when /[a-zA-Z]/
@@ -81,7 +81,7 @@ module Landescape
     def escape_code_parens(token)
       token << read_char
 
-      case token.chars.to_a.last
+      case token[-1]
       when /[\da-zA-Z]/
         token
       else
@@ -92,7 +92,7 @@ module Landescape
     def escape_code_sharp(token)
       token << read_char
 
-      case token.chars.to_a.last
+      case token[-1]
       when /\d/
         token
       else
@@ -103,7 +103,7 @@ module Landescape
     def escape_code_slash(token)
       token << read_char
 
-      case token.chars.to_a.last
+      case token[-1]
       when /[a-zA-Z]/
         token
       else
