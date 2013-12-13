@@ -26,15 +26,22 @@ module Landescape
     def start
       @tokenize_thread = Thread.fork {
         while char = read_char
-          tokens =
-            case char
-            when nil  then Thread.exit # StringIO#getc # => nil (EOF)
-            when /\e/ then escape char
-            else char
-            end
+          begin
+            tokens =
+              case char
+              when nil  then Thread.exit # StringIO#getc # => nil (EOF)
+              when /\e/ then escape char
+              else char
+              end
 
-          Array(tokens).each do |token|
-            result.push token
+            Array(tokens).each do |token|
+              result.push token
+            end
+          rescue => e
+            Landescape.logger.error <<-ERR.lstrip
+              #{e.class.name} #{e.message}
+              #{e.backtrace.join($/)}
+            ERR
           end
         end
       }
