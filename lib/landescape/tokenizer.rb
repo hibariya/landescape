@@ -38,7 +38,7 @@ module Landescape
               result.push token
             end
           rescue => e
-            Landescape.logger.error <<-ERR.lstrip
+            Landescape.logger.error <<-ERR
               #{e.class.name} #{e.message}
               #{e.backtrace.join($/)}
             ERR
